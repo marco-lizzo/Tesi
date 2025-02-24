@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Ringraziamenti Tesi</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { max-width: 600px; margin: auto; }
+    h1 { text-align: center; }
+    .result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Inserisci il tuo nome</h1>
+    <form id="nameForm">
+      <input type="text" id="nameInput" placeholder="Inserisci il tuo nome" required>
+      <button type="submit">Invia</button>
+    </form>
+    <div id="result" class="result"></div>
+    <div style="margin-top:20px;">
+      <a href="full_list.txt" download>Scarica l'elenco completo dei ringraziamenti</a>
+    </div>
+  </div>
+  <script>
+    // Oggetto contenente i ringraziamenti per ogni nome
+    const ringraziamenti = {
+      "Alberto": "Grazie Alberto per il tuo supporto!",
+      "Teresa": "Grazie Teresa per la tua dedizione!",
+      "Marco": "Grazie Marco per il tuo contributo!"
+      // Aggiungi qui altri nomi e i relativi messaggi...
+    };
+
+    // Gestione del form: quando viene inviato, mostra il ringraziamento corrispondente
+    document.getElementById("nameForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // impedisce il comportamento predefinito del form
+      const name = document.getElementById("nameInput").value.trim();
+      const message = ringraziamenti[name] || "Mi dispiace, non troviamo un ringraziamento per questo nome.";
+      document.getElementById("result").textContent = message;
+    });
+  </script>
+</body>
+</html>
